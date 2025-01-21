@@ -21,7 +21,7 @@ class SocialMediaService {
         $this->accessToken = $accessToken;
     }
 
-    public function getPostsByHashtag($hashtag) {
+    public function getPostsByHashtag($hashtag='msivanguard') {
         $posts = [];
         
         try {
@@ -54,20 +54,19 @@ class SocialMediaService {
         $facebookPosts = [];
 
         foreach ($graphEdge as $post) {
-            $facebookPosts[] = new SocialPost(
-                null,
-                'facebook',
-                $post['id'],
-                $post['message'] ?? '',
-                '', // author not directly available
-                $post['created_time']->format('Y-m-d H:i:s'),
-                0, // likes count not directly available
-                0, // comments count not directly available
-                0, // shares count not directly available
-                '', // media url not directly available
-                $post['permalink_url'],
-                $hashtag
-            );
+            $facebookPosts[] = new SocialPost([
+                'platform' => 'facebook',
+                'post_id' => $post['id'],
+                'message' => $post['message'] ?? '',
+                'author' => '', // author not directly available
+                'post_created_at' => $post['created_time']->format('Y-m-d H:i:s'),
+                'likes_count' => 0, // likes count not directly available
+                'comments_count' => 0, // comments count not directly available
+                'shares_count' => 0, // shares count not directly available
+                'media_url' => '', // media url not directly available
+                'post_url' => $post['permalink_url'],
+                'hashtags' => $hashtag
+            ]);
         }
 
         return $facebookPosts;
@@ -91,20 +90,19 @@ class SocialMediaService {
         $instagramPosts = [];
 
         foreach ($graphEdge as $post) {
-            $instagramPosts[] = new SocialPost(
-                null,
-                'instagram',
-                $post['id'],
-                $post['caption'] ?? '',
-                '', // author not directly available
-                $post['timestamp']->format('Y-m-d H:i:s'),
-                0, // likes count not directly available
-                0, // comments count not directly available
-                0, // shares count not directly available
-                $post['media_url'],
-                $post['permalink'],
-                $hashtag
-            );
+            $instagramPosts[] = new SocialPost([
+                'platform' => 'instagram',
+                'post_id' => $post['id'],
+                'message' => $post['caption'] ?? '',
+                'author' => '', // author not directly available
+                'post_created_at' => $post['timestamp']->format('Y-m-d H:i:s'),
+                'likes_count' => 0, // likes count not directly available
+                'comments_count' => 0, // comments count not directly available
+                'shares_count' => 0, // shares count not directly available
+                'media_url' => $post['media_url'],
+                'post_url' => $post['permalink'],
+                'hashtags' => $hashtag
+            ]);
         }
 
         return $instagramPosts;
