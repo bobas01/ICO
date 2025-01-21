@@ -1,17 +1,10 @@
-var header = $("header");
-var range = 200;
+window.addEventListener("scroll", function() {
+  const header = document.querySelector("header");
+  const scrollPosition = window.scrollY;
 
-$(window).on("scroll", function () {
-  var scrollTop = $(this).scrollTop(),
-    height = header.outerHeight(),
-    offset = height / 2,
-    calc = 1 - (scrollTop - offset + range) / range;
-
-  header.css({ opacity: calc });
-
-  if (calc > "1") {
-    header.css({ opacity: 1 });
-  } else if (calc < "0") {
-    header.css({ opacity: 0 });
+  if (scrollPosition > 100) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
   }
 });
