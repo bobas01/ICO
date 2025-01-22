@@ -1,3 +1,7 @@
+
+<link rel="stylesheet" href="../css/style.css">
+
+
 <footer class="footer">
   <div class="footer-background">
     <div class="footer-image"></div> <!-- Image de carte perroquet -->

@@ -1,4 +1,7 @@
 <?php
+
+
+
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -30,7 +33,7 @@ $tables = [
         stripeConnectId VARCHAR(255)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
-    "Order" => "CREATE TABLE IF NOT EXISTS `Order` (
+    "Message" => "CREATE TABLE IF NOT EXISTS `Message` (
         Id INT AUTO_INCREMENT PRIMARY KEY,
         totalPrice DECIMAL(10, 2) NOT NULL,
         IdUser INT,
