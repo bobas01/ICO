@@ -23,7 +23,7 @@ function showToast(message, isSuccess) {
     
     const formData = new FormData(this);
     
-    fetch('../../controller/ContactController.php', {
+    fetch('/ICO/contact/send', {
       method: 'POST',
       body: formData
     })

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'd23d3ce5c743acbeb977e2607e16d9e2cd4c33ab',
+        'reference' => '40080994f33d22020a9148e00f1d54d2f40bd101',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'd23d3ce5c743acbeb977e2607e16d9e2cd4c33ab',
+            'reference' => '40080994f33d22020a9148e00f1d54d2f40bd101',
             'dev_requirement' => false,
         ),
         'altorouter/altorouter' => array(
@@ -35,6 +35,15 @@
             'install_path' => __DIR__ . '/../facebook/graph-sdk',
             'aliases' => array(),
             'reference' => '38fd7187a6704d3ab14ded2f3a534ac4ee6f3481',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.9.3',
+            'version' => '6.9.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '2f5c94fe7493efc213f643c23b1b1c249d40f47e',
             'dev_requirement' => false,
         ),
         'symfony/deprecation-contracts' => array(

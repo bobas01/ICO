@@ -10,7 +10,7 @@ $router->setBasePath('/ICO');
 
 // Définissez vos routes ici
 $router->map('GET', '/', 'HomeController#index', 'home');
-$router->map('GET', '/règles_du_jeu', 'RulesController#index', 'rules');
+$router->map('GET', '/regles_du_jeu', 'RulesController#index', 'rules');
 $router->map('GET', '/contact', 'ContactController#index', 'contact');
 $router->map('POST', '/contact/send', 'ContactController#sendMail', 'contact_send');
 $router->map('GET', '/backoffice', 'BackOfficeController#index', 'backoffice');

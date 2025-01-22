@@ -28,6 +28,10 @@ class ComposerStaticInit824f0644c9c16e2117a66b4411bd576c
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'F' => 
         array (
             'Facebook\\' => 9,
@@ -51,6 +55,10 @@ class ComposerStaticInit824f0644c9c16e2117a66b4411bd576c
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
@@ -60,22 +68,24 @@ class ComposerStaticInit824f0644c9c16e2117a66b4411bd576c
     public static $classMap = array (
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'App\\Controller\\CardController' => __DIR__ . '/../..' . '/controller/CardController.php',
+        'App\\Controller\\ContactController' => __DIR__ . '/../..' . '/controller/ContactController.php',
         'App\\Controller\\Controller' => __DIR__ . '/../..' . '/controller/Controller.php',
         'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/controller/HomeController.php',
+        'App\\Controller\\RulesController' => __DIR__ . '/../..' . '/controller/RulesController.php',
         'App\\Controller\\SocialMediaController' => __DIR__ . '/../..' . '/controller/SocialMediaController.php',
+        'App\\Model\\ContactModel' => __DIR__ . '/../..' . '/model/ContactModel.php',
+        'App\\Model\\Model' => __DIR__ . '/../..' . '/model/Model.php',
+        'App\\Model\\RegisterModel' => __DIR__ . '/../..' . '/model/Register.php',
         'App\\Models\\SocialPost' => __DIR__ . '/../..' . '/class/SocialPost.php',
         'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
         'Card' => __DIR__ . '/../..' . '/class/Card.php',
         'CardsDistribution' => __DIR__ . '/../..' . '/class/CardsDistribution.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'ContactController' => __DIR__ . '/../..' . '/controller/ContactController.php',
-        'ContactModel' => __DIR__ . '/../..' . '/model/ContactModel.php',
         'Event' => __DIR__ . '/../..' . '/class/Event.php',
         'Game' => __DIR__ . '/../..' . '/class/Game.php',
         'GameOrder' => __DIR__ . '/../..' . '/class/GameOrder.php',
         'Material' => __DIR__ . '/../..' . '/class/Material.php',
         'Message' => __DIR__ . '/../..' . '/class/Message.php',
-        'Model' => __DIR__ . '/../..' . '/model/Model.php',
         'Order' => __DIR__ . '/../..' . '/class/Order.php',
         'Post' => __DIR__ . '/../..' . '/class/Post.php',
         'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',

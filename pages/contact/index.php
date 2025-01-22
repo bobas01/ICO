@@ -22,7 +22,7 @@
         <?php endif; ?>
         <section class="login-container">
             <div>
-                <form id="contact-form" method="POST" action="/contact/send">
+                <form id="contact-form" method="POST" action="/ICO/contact/send">
                     <div class="form-group">
                         <label for="name">Nom</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Nom" required>

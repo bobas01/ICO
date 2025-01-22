@@ -5,7 +5,9 @@ namespace App\Controller;
 class RulesController extends Controller
 {
     public function index()
-    {
-        $this->renderPage('règles_du_jeu/index', 'Règles des jeux - ICO Board Game');
+    {   
+        $pageTitle = "Règles des jeux - ICO Board Game";
+        $content = $this->render('regles_du_jeu/index', compact('pageTitle'), true);
+        $this->renderLayout($content);
     }
 }
