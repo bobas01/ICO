@@ -6,5 +6,26 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
+    'App\\Controller\\CardController' => $baseDir . '/controller/CardController.php',
+    'App\\Controller\\Controller' => $baseDir . '/controller/Controller.php',
+    'App\\Controller\\HomeController' => $baseDir . '/controller/HomeController.php',
+    'App\\Controller\\SocialMediaController' => $baseDir . '/controller/SocialMediaController.php',
+    'App\\Models\\SocialPost' => $baseDir . '/class/SocialPost.php',
+    'CURLStringFile' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
+    'Card' => $baseDir . '/class/Card.php',
+    'CardsDistribution' => $baseDir . '/class/CardsDistribution.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'ContactController' => $baseDir . '/controller/ContactController.php',
+    'ContactModel' => $baseDir . '/model/ContactModel.php',
+    'Event' => $baseDir . '/class/Event.php',
+    'Game' => $baseDir . '/class/Game.php',
+    'GameOrder' => $baseDir . '/class/GameOrder.php',
+    'Material' => $baseDir . '/class/Material.php',
+    'Message' => $baseDir . '/class/Message.php',
+    'Model' => $baseDir . '/model/Model.php',
+    'Order' => $baseDir . '/class/Order.php',
+    'Post' => $baseDir . '/class/Post.php',
+    'ReturnTypeWillChange' => $vendorDir . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+    'User' => $baseDir . '/class/User.php',
 );

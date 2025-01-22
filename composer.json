@@ -1,5 +1,11 @@
 {
+   
+    "autoload": {
+        "classmap" : ["class", "controller", "model", "pages"]
+    },
     "require": {
+        "altorouter/altorouter": "1.1.0",
+        "twig/twig": "^3.4",
         "facebook/graph-sdk": "^5.1"
     }
 }

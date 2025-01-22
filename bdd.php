@@ -33,11 +33,27 @@ $tables = [
         stripeConnectId VARCHAR(255)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
-    "Message" => "CREATE TABLE IF NOT EXISTS `Message` (
+    "Order" => "CREATE TABLE IF NOT EXISTS `Order` (
         Id INT AUTO_INCREMENT PRIMARY KEY,
         totalPrice DECIMAL(10, 2) NOT NULL,
         IdUser INT,
         FOREIGN KEY (IdUser) REFERENCES User(Id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
+
+    "Order_Game" => "CREATE TABLE IF NOT EXISTS Order_Game (
+        IdOrder INT,
+        IdGame INT,
+        PRIMARY KEY (IdOrder, IdGame),
+        FOREIGN KEY (IdOrder) REFERENCES `Order`(Id),
+        FOREIGN KEY (IdGame) REFERENCES Game(Id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
+
+    "Message" => "CREATE TABLE IF NOT EXISTS Message (
+        Id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
     "Material" => "CREATE TABLE IF NOT EXISTS Material (

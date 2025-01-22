@@ -1,5 +1,10 @@
 <?php
+<<<<<<< Updated upstream
 session_start();
+=======
+// Début de session (important pour les messages flash)
+
+>>>>>>> Stashed changes
 
 $host = 'localhost';
 $username = 'root';

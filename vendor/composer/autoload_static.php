@@ -4,9 +4,30 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a
+class ComposerStaticInit824f0644c9c16e2117a66b4411bd576c
 {
+    public static $files = array (
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        '89efb1254ef2d1c5d80096acd12c4098' => __DIR__ . '/..' . '/twig/twig/src/Resources/core.php',
+        'ffecb95d45175fd40f75be8a23b34f90' => __DIR__ . '/..' . '/twig/twig/src/Resources/debug.php',
+        'c7baa00073ee9c61edf148c51917cfb4' => __DIR__ . '/..' . '/twig/twig/src/Resources/escaper.php',
+        'f844ccf1d25df8663951193c3fc307c8' => __DIR__ . '/..' . '/twig/twig/src/Resources/string_loader.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Php81\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
         'F' => 
         array (
             'Facebook\\' => 9,
@@ -14,6 +35,22 @@ class ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Php81\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
         'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
@@ -21,15 +58,36 @@ class ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a
     );
 
     public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
+        'App\\Controller\\CardController' => __DIR__ . '/../..' . '/controller/CardController.php',
+        'App\\Controller\\Controller' => __DIR__ . '/../..' . '/controller/Controller.php',
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/controller/HomeController.php',
+        'App\\Controller\\SocialMediaController' => __DIR__ . '/../..' . '/controller/SocialMediaController.php',
+        'App\\Models\\SocialPost' => __DIR__ . '/../..' . '/class/SocialPost.php',
+        'CURLStringFile' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/CURLStringFile.php',
+        'Card' => __DIR__ . '/../..' . '/class/Card.php',
+        'CardsDistribution' => __DIR__ . '/../..' . '/class/CardsDistribution.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'ContactController' => __DIR__ . '/../..' . '/controller/ContactController.php',
+        'ContactModel' => __DIR__ . '/../..' . '/model/ContactModel.php',
+        'Event' => __DIR__ . '/../..' . '/class/Event.php',
+        'Game' => __DIR__ . '/../..' . '/class/Game.php',
+        'GameOrder' => __DIR__ . '/../..' . '/class/GameOrder.php',
+        'Material' => __DIR__ . '/../..' . '/class/Material.php',
+        'Message' => __DIR__ . '/../..' . '/class/Message.php',
+        'Model' => __DIR__ . '/../..' . '/model/Model.php',
+        'Order' => __DIR__ . '/../..' . '/class/Order.php',
+        'Post' => __DIR__ . '/../..' . '/class/Post.php',
+        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
+        'User' => __DIR__ . '/../..' . '/class/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit4d1bea88155d7b3563f87231c0d1f40a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit824f0644c9c16e2117a66b4411bd576c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit824f0644c9c16e2117a66b4411bd576c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit824f0644c9c16e2117a66b4411bd576c::$classMap;
 
         }, null, ClassLoader::class);
     }
