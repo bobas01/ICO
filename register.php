@@ -1,8 +1,6 @@
 <?php
-// Début de session (important pour les messages flash)
 session_start();
 
-// Connexion à la base de données
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -17,33 +15,36 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $conn->real_escape_string($_POST['username']);
     $email = $conn->real_escape_string($_POST['email']);
-    $message = $conn->real_escape_string($_POST['subject']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
-    // Vérification si l'email existe déjà
-    $check_email = $conn->query("SELECT * FROM User WHERE email = '$email'");
-    if ($check_email->num_rows > 0) {
-        $_SESSION['error'] = "Cet email est déjà utilisé.";
+    $phone = $conn->real_escape_string($_POST['phone']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validation du mot de passe
+    $password_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/";
+    if (!preg_match($password_regex, $password)) {
+        $_SESSION['error'] = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, des minuscules, un chiffre et un caractère spécial.";
+    } elseif ($password !== $confirm_password) {
+        $_SESSION['error'] = "Les mots de passe ne correspondent pas.";
     } else {
-        // Insertion de l'utilisateur
-        $sql = "INSERT INTO User (name, email, password) VALUES ('$name', '$email', '$password')";
-        if ($conn->query($sql) === TRUE) {
-            $user_id = $conn->insert_id;
-            
-            // Insertion du message
-            $sql_message = "INSERT INTO Message (IdUser, totalPrice) VALUES ($user_id, 0)";
-            if ($conn->query($sql_message) === TRUE) {
-                // Message de succès
+        $check_email = $conn->prepare("SELECT * FROM User WHERE email = ?");
+        $check_email->bind_param("s", $email);
+        $check_email->execute();
+        $result = $check_email->get_result();
+
+        if ($result->num_rows > 0) {
+            $_SESSION['error'] = "Cet email est déjà utilisé.";
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $conn->prepare("INSERT INTO User (name, email, password, phoneNumber) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $name, $email, $hashed_password, $phone);
+
+            if ($stmt->execute()) {
                 $_SESSION['success'] = "Inscription réussie !";
-                
-                // Redirection vers index.php
                 header("Location: index.php");
                 exit();
             } else {
-                $_SESSION['error'] = "Erreur lors de l'enregistrement du message.";
+                $_SESSION['error'] = "Erreur lors de l'inscription : " . $conn->error;
             }
-        } else {
-            $_SESSION['error'] = "Erreur lors de l'inscription.";
         }
     }
 }
@@ -59,7 +60,6 @@ $conn->close();
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Inclusion du Header et Menu de Navigation -->
     <?php include('Include/header.php'); ?>
     <?php include('Include/navbar.php'); ?>
 
@@ -67,13 +67,12 @@ $conn->close();
         <h1>Inscription</h1>
         
         <?php
-        // Affichage des messages d'erreur ou de succès
         if (isset($_SESSION['error'])) {
-            echo "<div class='alert error'>" . $_SESSION['error'] . "</div>";
+            echo "<div class='alert error'>" . htmlspecialchars($_SESSION['error']) . "</div>";
             unset($_SESSION['error']);
         }
         if (isset($_SESSION['success'])) {
-            echo "<div class='alert success'>" . $_SESSION['success'] . "</div>";
+            echo "<div class='alert success'>" . htmlspecialchars($_SESSION['success']) . "</div>";
             unset($_SESSION['success']);
         }
         ?>
@@ -81,16 +80,19 @@ $conn->close();
         <section class="login-container">
             <div>
                 <form action="" method="post">
-                    <input type="text" name="username" placeholder="Nom d'utilisateur" required="required"/>
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
                     
                     <label for="emailAddress">Email</label>
                     <input id="emailAddress" type="email" name="email" placeholder="Votre email" required>
                     
+                    <label for="phone">Numéro de téléphone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Votre numéro de téléphone" required>
+
                     <label for="password">Mot de passe</label>
-                    <input type="password" name="password" placeholder="Votre mot de passe" required>
+                    <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
                     
-                    <label for="subject">Message</label>
-                    <textarea id="subject" name="subject" placeholder="Votre message" style="height:200px"></textarea>
+                    <label for="confirm_password">Confirmer le mot de passe</label>
+                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmez votre mot de passe" required>
                     
                     <button type="submit">S'inscrire</button>
                 </form>
@@ -98,7 +100,6 @@ $conn->close();
         </section>
     </div>
 
-    <!-- Inclusion du Footer -->
     <?php include('Include/footer.php'); ?>
     
     <script src="../js/script.js"></script>

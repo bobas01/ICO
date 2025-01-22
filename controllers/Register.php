@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 
 // Connexion à la base de données
 $host = 'localhost';
@@ -17,32 +16,43 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $conn->real_escape_string($_POST['username']);
     $email = $conn->real_escape_string($_POST['email']);
-    $message = $conn->real_escape_string($_POST['subject']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    
-    // Vérification si l'email existe déjà
-    $check_email = $conn->query("SELECT * FROM User WHERE email = '$email'");
-    if ($check_email->num_rows > 0) {
-        echo "Cet email est déjà utilisé.";
+    $phone = $conn->real_escape_string($_POST['phone']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    // Validation du mot de passe
+    $password_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/";
+    if (!preg_match($password_regex, $password)) {
+        $_SESSION['error'] = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, des minuscules, un chiffre et un caractère spécial.";
+    } elseif ($password !== $confirm_password) {
+        $_SESSION['error'] = "Les mots de passe ne correspondent pas.";
     } else {
-        // Insertion de l'utilisateur
-        $sql = "INSERT INTO User (name, email, password) VALUES ('$name', '$email', '$password')";
-        if ($conn->query($sql) === TRUE) {
-            $user_id = $conn->insert_id;
-            
-            // Insertion du message
-            $sql_message = "INSERT INTO Message (IdUser, totalPrice) VALUES ($user_id, 0)";
-            if ($conn->query($sql_message) === TRUE) {
-                echo "Inscription réussie !";
-            } else {
-                echo "Erreur lors de l'enregistrement du message : " . $conn->error;
-            }
+        // Vérification si l'email existe déjà
+        $check_email = $conn->prepare("SELECT * FROM User WHERE email = ?");
+        $check_email->bind_param("s", $email);
+        $check_email->execute();
+        $result = $check_email->get_result();
+
+        if ($result->num_rows > 0) {
+            $_SESSION['error'] = "Cet email est déjà utilisé.";
         } else {
-            echo "Erreur lors de l'inscription : " . $conn->error;
+            // Hachage du mot de passe
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insertion de l'utilisateur
+            $stmt = $conn->prepare("INSERT INTO User (name, email, password, phoneNumber) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $name, $email, $hashed_password, $phone);
+
+            if ($stmt->execute()) {
+                $_SESSION['success'] = "Inscription réussie !";
+                header("Location: login.php");
+                exit();
+            } else {
+                $_SESSION['error'] = "Erreur lors de l'inscription : " . $conn->error;
+            }
         }
     }
 }
 
 $conn->close();
 ?>
-
