@@ -8,25 +8,29 @@ session_start();
         <ul>
             <li>
                 <a href="index.php">
-                    <img src="img/icons/home.png" alt="" class="nav-icon">
+                    <img src="./img/home.png" alt="" class="nav-icon">
                     Accueil
                 </a>
             </li>
             <li>
                 <a href="./Pages/reglesdejeux.php">
-                    <img src="img/icons/regle.png" alt="" class="nav-icon">
+                    <img src="./img/regle.png" alt="" class="nav-icon">
                     Règles des jeux
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <img src="img/icons/contact.png" alt="" class="nav-icon">
+                    <img src="./img/contact.png" alt="" class="nav-icon">
                     Contact
                 </a>
             </li>
         </ul>
         <div class="icons">
+            <a href="index.php">
+                <img src="./img/tresor.png" alt="" class="icon">
+            </a>
             <div class="dropdown">
+<<<<<<< Updated upstream
                 <img src="img/logo/compte.png" alt="Compte" class="icon dropbtn">
 =======
  // Assurez-vous d'ajouter cette ligne en début de fichier
@@ -55,6 +59,9 @@ session_start();
             <a href="index.php">
                 <img src="img/logo/compte.png" alt="Compte" class="icon">
 >>>>>>> Stashed changes
+=======
+                <img src="./img/perroquet.png" alt="" class="icon dropbtn">
+>>>>>>> Stashed changes
                 <div class="dropdown-content">
                     <?php
                     if(isset($_SESSION['user_id'])) {
@@ -66,10 +73,14 @@ session_start();
                     }
                     ?>
                 </div>
+<<<<<<< Updated upstream
             </a>
             <a href="index.php">
                 <img src="img/logo/panier.webp" alt="Panier" class="icon">
             </a>
+=======
+            </div>
+>>>>>>> Stashed changes
         </div>
     </div>
 </nav>

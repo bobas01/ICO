@@ -773,12 +773,15 @@ nav ul li a {
   height: 32px;
   margin-left: 16px;
 }
+.dropdown{
+  position: relative;
+}
 
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0;
+  top:25;
+  right: -50px;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -799,16 +802,16 @@ nav ul li a {
   background-color: #f1f1f1;
 }
 
-.dropdown-content {
+/* .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 0;
   right: 0;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
+} */
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -821,8 +824,3 @@ nav ul li a {
 
 
 
-
-<<<<<<< Updated upstream
-=======
-  
->>>>>>> Stashed changes
